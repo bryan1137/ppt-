@@ -3,11 +3,16 @@ var butPiedra = document.getElementById("but-piedra");
 var butPapel = document.getElementById("but-papel");
 var butTijera = document.getElementById("but-tijera");
 
+var puntajeUser = 0;
+var puntajeCpu = 0;
 //**Creamos las referencias */
 var lbluser = document.getElementById("lbl-user");
 var lblcpu = document.getElementById("lbl-cpu");
 var lblfinal = document.getElementById("lbl-final");
- 
+var lblpuntajeUsuario = document.getElementById("lbl-put-user")
+var lblpuntajeCpu = document.getElementById("lbl-put-cpu")
+
+var opciones = ["PIEDRA" , "PAPEL" , "TIJERA"];
 
 
 butPiedra.addEventListener("click", function () {
@@ -27,11 +32,20 @@ function startGame(value) {
     let userSelection = value
     let cpuSelection = getCpuResponse();
     let respuesta = checkwinner(userSelection, cpuSelection);
-
+     
+    if(respuesta == "GANASTE"){
+        puntajeUser++;
+        /**puntajeUser += 1;*/
+    }
+    else if(respuesta == "PERDISTE"){
+        puntajeCpu++;
+    }
 
     lbluser.innerHTML = userSelection;
     lblcpu.innerHTML = cpuSelection;
     lblfinal.innerHTML = respuesta;
+    lblpuntajeUsuario.innerHTML = puntajeUser;
+    lblpuntajeCpu.innerHTML = puntajeCpu;
 
 
     console.log(userSelection);
